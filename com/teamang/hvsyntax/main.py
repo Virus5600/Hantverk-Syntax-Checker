@@ -1,18 +1,19 @@
 import json5
 import os
+import sys
 from Lexer import Lexer
 
 class SyntaxChecker():
 
 	rootPath = os.getcwd()
 
-	def __init__(self, includeLexerPrefix: bool = True):
+	def __init__(self, includeLexerPrefix: bool = True, debugMode: bool = True):
 		"""
 		Initializes the lexer and runs the checker
 		"""
 		with open(os.path.join(self.rootPath, "resources/tokens.jsonc"), "r") as file:
 			tokens = json5.load(file)
-			self.lexer = Lexer(tokens, includeLexerPrefix, True).getLexer()
+			self.lexer = Lexer(tokens, includeLexerPrefix, debugMode).getLexer()
 
 	def runChecker(self, continueRunning: bool = False):
 		"""
@@ -31,12 +32,14 @@ class SyntaxChecker():
 
 				for token in tokens:
 					print(token)
+
+				if not continueRunning:
+					break
 			except Exception as e:
 				print("\n======= ERROR =======")
 				print(e)
 				print("=====================\n")
 		return
-
 
 """
 SAMPLE INPUT:
@@ -47,6 +50,18 @@ arr<str> ary = ["Hello", "World"];
 
 int x = 1;
 """
-checker = SyntaxChecker(False)
 
-checker.runChecker(True)
+# Default Options Setting
+loopChecker = True		# loopChecker == LOOP
+includePrefix = False	# includePrefix == PREFIX
+debugMode = False		# debugMode == DEBUG
+
+if __name__ == "__main__":
+	# Option Update based on System Param
+	loopChecker = int(sys.argv[1]) == 1
+	includePrefix = int(sys.argv[2]) == 1
+	debugMode = int(sys.argv[3]) == 1
+
+	checker = SyntaxChecker(includePrefix, debugMode)
+
+	checker.runChecker(loopChecker)

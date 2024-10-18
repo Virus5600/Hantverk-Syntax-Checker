@@ -82,7 +82,7 @@
 	"Arithmetic - multiplication": "\\*",
 	"Arithmetic - division": "/",
 	"Arithmetic - modulo": "%",
-	"Arithmetic - exponentiation": "^",
+	"Arithmetic - exponentiation": "\\^",
 
 	// DATA TYPE VALUES
 	"Value - boolean": "true|false",
