@@ -1,7 +1,13 @@
 # Hantverk Syntax Checker
 
  A final project for the subject Programming Language, that checks the syntax of
- the Hantverk Language developed back during midterms
+ the Hantverk Language developed back during midterms.
+
+ Developed by TeamAng:
+
+ - [Karl Satch Navida](https://github.com/Virus5600)
+ - [Kenji Sugino](https://github.com/KrimssmirK)
+ - [Jul Seth Mercado](#)
 
 ---
 
